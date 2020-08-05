@@ -1,37 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>NSS Maps</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
-
-    html,
-    body,
-    #map {
-      height: 100%;
-      width: 100%;
-    }
-
-    #overpass-api-controls {
-      padding: 10px;
-      background-color: rgb(255, 255, 255);
-    }
-
-    #overpass-api-controls a {
-      display: inline;
-    }
-  </style>
+  <title>NSS OSM</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/iconfonts/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
@@ -41,22 +14,29 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="libs/leaflet/leaflet.css"/> 
   <!-- endinject -->
-  <link rel="shortcut icon" href="http://www.urbanui.com/" />
+  <style>
+    #map {
+        height: 100%;
+        width: 100%;
+      }
+      #overpass-api-controls {
+        padding: 10px;
+        background-color: rgb(255, 255, 255);
+      }
+      #overpass-api-controls a {
+        display: inline;
+      }
+  </style>
 </head>
-
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html">
-          <span>
-            <!-- <img style="width: 2em;" src="images/nsslogo.jpg" alt="logo" /> -->
-            <h2>NSS OSM</h2>
-          </span>
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/nsslogo.jpg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -71,7 +51,7 @@
                     <i class="fas fa-search"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Search place" aria-label="Search">
+                <input type="text" class="form-control" placeholder="Search" aria-label="Search">
               </div>
             </div>
           </li>
@@ -81,321 +61,147 @@
             <a class="nav-link" href="#">
               <span class="btn btn-primary">Search</span>
             </a>
+            <li class="nav-item dropdown d-none d-lg-flex">
+              <div class="nav-link">
+                <span class="dropdown-toggle btn btn-outline-dark" id="languageDropdown" data-toggle="dropdown">Statistics</span>
+                <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
+                  <a class="dropdown-item font-weight-medium" href="#">
+                    Charts
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item font-weight-medium" href="#">
+                    Tables
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item font-weight-medium" href="#">
+                    Dashboard
+                  </a>
+                  
+              </div>
+            </li>
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="images/faces/face5.jpg" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item">
+                <i class="fas fa-cog text-primary"></i>
+                Settings
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item">
+                <i class="fas fa-power-off text-primary"></i>
+                Logout
+              </a>
+            </div>
           </li>
-
+          <li class="nav-item nav-settings d-none d-lg-block">
+            <a class="nav-link" href="#">
+              <i class="fas fa-ellipsis-h"></i>
+            </a>
+          </li>
         </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-          data-toggle="offcanvas">
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="fas fa-bars"></span>
         </button>
-
       </div>
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-
-      <div id="right-sidebar" class="settings-panel">
-        <i class="settings-close fa fa-times"></i>
-        <ul class="nav nav-tabs" id="setting-panel" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab"
-              aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab"
-              aria-controls="chats-section">CHATS</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="setting-content">
-          <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
-            aria-labelledby="todo-section">
-            <div class="add-items d-flex px-3 mb-0">
-              <form class="form w-100">
-                <div class="form-group d-flex">
-                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task-todo">Add</button>
-                </div>
-              </form>
-            </div>
-            <div class="list-wrapper px-3">
-              <ul class="d-flex flex-column-reverse todo-list">
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Team review meeting at 3.00 PM
-                    </label>
-                  </div>
-                  <i class="remove fa fa-times-circle"></i>
-                </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Prepare for presentation
-                    </label>
-                  </div>
-                  <i class="remove fa fa-times-circle"></i>
-                </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Resolve all the low priority tickets due today
-                    </label>
-                  </div>
-                  <i class="remove fa fa-times-circle"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked>
-                      Schedule meeting for next week
-                    </label>
-                  </div>
-                  <i class="remove fa fa-times-circle"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked>
-                      Project review
-                    </label>
-                  </div>
-                  <i class="remove fa fa-times-circle"></i>
-                </li>
-              </ul>
-            </div>
-            <div class="events py-4 border-bottom px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="fa fa-times-circle text-primary mr-2"></i>
-                <span>Feb 11 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Creating component page</p>
-              <p class="text-gray mb-0">build a js based app</p>
-            </div>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="fa fa-times-circle text-primary mr-2"></i>
-                <span>Feb 7 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-              <p class="text-gray mb-0 ">Call Sarah Graves</p>
-            </div>
-          </div>
-          <!-- To do section tab ends -->
-          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-            <div class="d-flex align-items-center justify-content-between border-bottom">
-              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See
-                All</small>
-            </div>
-            <ul class="chat-list">
-              <li class="list active">
-                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Thomas Douglas</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">19 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <div class="wrapper d-flex">
-                    <p>Catherine</p>
-                  </div>
-                  <p>Away</p>
-                </div>
-                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
-                <small class="text-muted my-auto">23 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Daniel Russell</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">14 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <p>James Richardson</p>
-                  <p>Away</p>
-                </div>
-                <small class="text-muted my-auto">2 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Madeline Kennedy</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">5 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Sarah Graves</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">47 min</small>
-              </li>
-            </ul>
-          </div>
-          <!-- chat tab ends -->
-        </div>
+      <!-- partial:partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <!-- <div id="settings-trigger"><i class="fas fa-fill-drip"></i></div> -->
       </div>
+      
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item d-none d-lg-block active">
-            <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false"
-              aria-controls="sidebar-layouts">
-              <i class="fas fa-columns menu-icon"></i>
-              <span class="menu-title">Add Items</span>
+          <li class="nav-item nav-profile">
+            <div class="nav-link">
+              <div class="profile-image">
+                <img src="images/faces/face5.jpg" alt="image"/>
+              </div>
+              <div class="profile-name">
+                <p class="name">
+                  DBIT Mumbai
+                </p>
+                <p class="designation">
+                  College Login
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa fa-home menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
+              <i class="fas fa-map-marker-alt menu-icon"></i>
+              <span class="menu-title">Add Element</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="sidebar-layouts">
+            <div class="collapse" id="maps">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/compact-menu.html">Add Point</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-collapsed.html">Add Line</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-hidden.html">Add Area</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Point</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Building</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Area</a></li>
               </ul>
             </div>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="pages/widgets.html">
+            <a class="nav-link" href="#">
               <i class="fa fa-puzzle-piece menu-icon"></i>
-              <span class="menu-title">Edit Item</span>
+              <span class="menu-title">Edit Element</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
-              aria-controls="form-elements">
-              <i class="fab fa-wpforms menu-icon"></i>
-              <span class="menu-title">Statistics</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Charts</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/forms/advanced_elements.html">Tables</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/forms/validation.html">Dashboards</a></li>
-              </ul>
-            </div>
-          </li>
-
-
+          
         </ul>
       </nav>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-
           <select class="browser-default custom-select " style="margin-bottom: 30px;">
             <option selected>Select your college</option>
             <option value="1">DBIT</option>
             <option value="2">SIES</option>
             <option value="3">Xaviers</option>
           </select>
-
-
           <div id="map">
             <div class="leaflet-control-container">
               <div class="leaflet-top leaflet-right">
-                <!-- <div id="overpass-api-controls" class="leaflet-bar leaflet-control">
-                  <input id="query-textfield" value="leisure=playground" size="50">
-                  <input id="query-button" type="button" value="Laden">
-                  The top button is supposed to be in place of this button
-                </div> -->
+                <!-- <div id="overpass-api-controls" class="leaflet-bar leaflet-control"> -->
+                  <!-- <input id="query-textfield" value="leisure=playground" size="50"> -->
+                  <!-- <input id="query-button" type="button" value="Laden"> -->
+                <!-- </div> -->
               </div>
             </div>
-
-          </div>
-
+          </div>  
         </div>
-      </div>
-      <!-- content-wrapper ends -->
-
-      <!-- partial:partials/_footer.html -->
-      <!--       
-          <footer class="footer">
+        
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-              
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
           </div>
-        </footer> -->
-      <!-- partial -->
-
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
     </div>
-    <!-- main-panel ends -->
-  </div>
-  <!-- page-body-wrapper ends -->
+    <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://unpkg.com/osmtogeojson@2.2.12/osmtogeojson.js"></script>
 
-  <script>
-    var map = L.map('map').setView([19.0812532, 72.8885961], 30);
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors</a>'
-    }).addTo(map);
-
-    function buildOverpassApiUrl(map, overpassQuery) {
-      var bounds = map.getBounds().getSouth() + ',' + map.getBounds().getWest() + ',' + map.getBounds().getNorth() + ',' + map.getBounds().getEast();
-      var nodeQuery = 'node[' + overpassQuery + '](' + bounds + ');';
-      var wayQuery = 'way[' + overpassQuery + '](' + bounds + ');';
-      var relationQuery = 'relation[' + overpassQuery + '](' + bounds + ');';
-      var query = '?data=[out:json][timeout:15];(' + nodeQuery + wayQuery + relationQuery + ');out body geom;';
-      var baseUrl = 'http://overpass-api.de/api/interpreter';
-      var resultUrl = baseUrl + query;
-      return resultUrl;
-    }
-
-    $("#query-button").click(function () {
-      var queryTextfieldValue = $("#query-textfield").val();
-      var overpassApiUrl = buildOverpassApiUrl(map, queryTextfieldValue);
-
-      $.get(overpassApiUrl, function (osmDataAsJson) {
-        var resultAsGeojson = osmtogeojson(osmDataAsJson);
-        var resultLayer = L.geoJson(resultAsGeojson, {
-          style: function (feature) {
-            return { color: "#ff0000" };
-          },
-          filter: function (feature, layer) {
-            var isPolygon = (feature.geometry) && (feature.geometry.type !== undefined) && (feature.geometry.type === "Polygon");
-            if (isPolygon) {
-              feature.geometry.type = "Point";
-              var polygonCenter = L.latLngBounds(feature.geometry.coordinates[0]).getCenter();
-              feature.geometry.coordinates = [polygonCenter.lat, polygonCenter.lng];
-            }
-            return true;
-          },
-          onEachFeature: function (feature, layer) {
-            var popupContent = "";
-            popupContent = popupContent + "<dt>@id</dt><dd>" + feature.properties.type + "/" + feature.properties.id + "</dd>";
-            var keys = Object.keys(feature.properties.tags);
-            keys.forEach(function (key) {
-              popupContent = popupContent + "<dt>" + key + "</dt><dd>" + feature.properties.tags[key] + "</dd>";
-            });
-            popupContent = popupContent + "</dl>"
-            layer.bindPopup(popupContent);
-          }
-        }).addTo(map);
-      });
-    });
-
-  </script>
+  <!-- leaflet JS Files -->
+  <script src="libs/leaflet/leaflet.js"></script>
+  <script src="libs/jquery/jquery-1.11.0.min.js"></script>
+  <script src="libs/osmtogeojson/osmtogeojson.js"></script>
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <script src="vendors/js/vendor.bundle.addons.js"></script>
@@ -412,6 +218,63 @@
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
-</body>
+  <!-- Leaflet Map Script Start -->
+  <script>
+    var map = L.map('map').setView([19.0812532,72.8885961], 16);
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+    }).addTo(map);
 
+    function buildOverpassApiUrl(map, overpassQuery) {
+      var bounds = map.getBounds().getSouth() + ',' + map.getBounds().getWest() + ',' + map.getBounds().getNorth() + ',' + map.getBounds().getEast();
+      var nodeQuery = 'node[' + overpassQuery + '](' + bounds + ');';
+      var wayQuery = 'way[' + overpassQuery + '](' + bounds + ');';
+      var relationQuery = 'relation[' + overpassQuery + '](' + bounds + ');';
+      var query = '?data=[out:xml][timeout:25];(' + nodeQuery + wayQuery + relationQuery + ');out body;>;out skel qt;';
+      var baseUrl = 'http://overpass-api.de/api/interpreter';
+      var resultUrl = baseUrl + query;
+      return resultUrl;
+    }
+
+    $("#query-button").click(function () {
+      var queryTextfieldValue = $("#query-textfield").val();
+      var overpassApiUrl = buildOverpassApiUrl(map, queryTextfieldValue);
+      
+      $.get(overpassApiUrl, function (osmDataAsXml) {
+        var resultAsGeojson = osmtogeojson(osmDataAsXml);
+        var resultLayer = L.geoJson(resultAsGeojson, {
+          style: function (feature) {
+            return {color: "#ff0000"};
+          },
+          filter: function (feature, layer) {
+            var isPolygon = (feature.geometry) && (feature.geometry.type !== undefined) && (feature.geometry.type === "Polygon");
+            if (isPolygon) {
+              feature.geometry.type = "Point";
+              var polygonCenter = L.latLngBounds(feature.geometry.coordinates[0]).getCenter();
+              feature.geometry.coordinates = [ polygonCenter.lat, polygonCenter.lng ];
+            }
+            return true;
+          },
+          onEachFeature: function (feature, layer) {
+            var popupContent = "";
+            var objectUrl = "http://overpass-api.de/api/interpreter?data=[out:json];" + feature.properties.type + "%28" + feature.properties.id + "%29;out;";
+            $.get(objectUrl, function (objectDataAsJson) {
+              popupContent = popupContent + "<dt>@id</dt><dd>" + feature.properties.type + "/" + feature.properties.id + "</dd>";
+              var keys = Object.keys(objectDataAsJson.elements[0].tags);
+              keys.forEach(function (key) {
+                popupContent = popupContent + "<dt>" + key + "</dt><dd>" + objectDataAsJson.elements[0].tags[key] + "</dd>";
+              });
+              popupContent = popupContent + "</dl>"
+              layer.bindPopup(popupContent);
+            });
+          }
+        }).addTo(map);
+      });
+    });
+
+  </script>
+    <!-- Leaflet Map Script End -->
+</body>
 </html>
