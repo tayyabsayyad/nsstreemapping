@@ -4,7 +4,37 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<<<<<<< HEAD
   <title>NSS OSM</title>
+=======
+  <title>NSS Maps</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="libs/leaflet/leaflet.css"/> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body,
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+
+    #overpass-api-controls {
+      padding: 10px;
+      background-color: rgb(255, 255, 255);
+    }
+
+    #overpass-api-controls a {
+      display: inline;
+    }
+  </style>
+>>>>>>> 55a295b9e05ded2821d592e550dc40dc307c9190
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/iconfonts/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
@@ -100,14 +130,43 @@
               <i class="fas fa-ellipsis-h"></i>
             </a>
           </li>
+<<<<<<< HEAD
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="fas fa-bars"></span>
         </button>
+=======
+          <li class="nav-item dropdown d-none d-lg-flex">
+            <div class="nav-link">
+              <span class="dropdown-toggle btn btn-outline-dark" id="languageDropdown" data-toggle="dropdown">Statistics</span>
+              <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
+                <a class="dropdown-item font-weight-medium" href="#">
+                  Charts
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item font-weight-medium" href="#">
+                  Tables
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item font-weight-medium" href="#">
+                  Dashboard
+                </a>
+                
+            </div>
+          </li>
+        </ul>
+
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="fas fa-bars"></span>
+        </button>
+        
+>>>>>>> 55a295b9e05ded2821d592e550dc40dc307c9190
       </div>
     </nav>
-    <!-- partial -->
+    
     <div class="container-fluid page-body-wrapper">
+<<<<<<< HEAD
       <!-- partial:partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
         <!-- <div id="settings-trigger"><i class="fas fa-fill-drip"></i></div> -->
@@ -115,6 +174,9 @@
       
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
+=======
+  <!-- partial:partials/_sidebar.html -->
+>>>>>>> 55a295b9e05ded2821d592e550dc40dc307c9190
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
@@ -138,6 +200,7 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+<<<<<<< HEAD
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
               <i class="fas fa-map-marker-alt menu-icon"></i>
@@ -159,6 +222,12 @@
             </a>
           </li>
           
+=======
+
+       
+
+
+>>>>>>> 55a295b9e05ded2821d592e550dc40dc307c9190
         </ul>
       </nav>
       <!-- partial -->
@@ -197,6 +266,12 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+<<<<<<< HEAD
+=======
+  <script src="libs/leaflet/leaflet.js"></script>
+  <script src="libs/jquery/jquery-1.11.0.min.js"></script>
+  <script src="libs/osmtogeojson/osmtogeojson.js"></script>
+>>>>>>> 55a295b9e05ded2821d592e550dc40dc307c9190
 
   <!-- leaflet JS Files -->
   <script src="libs/leaflet/leaflet.js"></script>
@@ -220,7 +295,11 @@
   <!-- End custom js for this page-->
   <!-- Leaflet Map Script Start -->
   <script>
+<<<<<<< HEAD
     var map = L.map('map').setView([19.0812532,72.8885961], 16);
+=======
+    var map = L.map('map').setView([53.079, 8.81308], 14);
+>>>>>>> 55a295b9e05ded2821d592e550dc40dc307c9190
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
