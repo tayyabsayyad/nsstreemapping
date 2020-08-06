@@ -146,9 +146,9 @@
             </a>
             <div class="collapse" id="maps">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="index-2.html">Point</a></li>
-                <li class="nav-item"> <a class="nav-link" href="index-2.html">Building</a></li>
-                <li class="nav-item"> <a class="nav-link" href="index-2.html">Area</a></li>
+                <li class="nav-item"> <a class="nav-link" href="addele.html">Point</a></li>
+                <li class="nav-item"> <a class="nav-link" href="addele.html">Building</a></li>
+                <li class="nav-item"> <a class="nav-link" href="addele.html">Area</a></li>
               </ul>
             </div>
           </li>
@@ -317,37 +317,7 @@ $(function() {
       fill: false
     }]
   };
-  var multiLineData = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [{
-        label: 'Dataset 1',
-        data: [12, 19, 3, 5, 2, 3],
-        borderColor: [
-          '#587ce4'
-        ],
-        borderWidth: 2,
-        fill: false
-      },
-      {
-        label: 'Dataset 2',
-        data: [5, 23, 7, 12, 42, 23],
-        borderColor: [
-          '#ede190'
-        ],
-        borderWidth: 2,
-        fill: false
-      },
-      {
-        label: 'Dataset 3',
-        data: [15, 10, 21, 32, 12, 33],
-        borderColor: [
-          '#f44252'
-        ],
-        borderWidth: 2,
-        fill: false
-      }
-    ]
-  };
+  
   var options = {
     scales: {
       yAxes: [{
@@ -366,67 +336,7 @@ $(function() {
     }
 
   };
-  var doughnutPieData = {
-    datasets: [{
-      data: [30, 40, 30],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(54, 162, 235, 0.5)',
-        'rgba(255, 206, 86, 0.5)',
-        'rgba(75, 192, 192, 0.5)',
-        'rgba(153, 102, 255, 0.5)',
-        'rgba(255, 159, 64, 0.5)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-    }],
-
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: [
-      'Pink',
-      'Blue',
-      'Yellow',
-    ]
-  };
-  var doughnutPieOptions = {
-    responsive: true,
-    animation: {
-      animateScale: true,
-      animateRotate: true
-    }
-  };
-  var areaData = {
-    labels: ["2013", "2014", "2015", "2016", "2017"],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 1,
-      fill: true, // 3: no fill
-    }]
-  };
-
+  
   var areaOptions = {
     plugins: {
       filler: {
@@ -435,126 +345,7 @@ $(function() {
     }
   }
 
-  var multiAreaData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [{
-        label: 'Facebook',
-        data: [8, 11, 13, 15, 12, 13, 16, 15, 13, 19, 11, 14],
-        borderColor: ['rgba(255, 99, 132, 0.5)'],
-        backgroundColor: ['rgba(255, 99, 132, 0.5)'],
-        borderWidth: 1,
-        fill: true
-      },
-      {
-        label: 'Twitter',
-        data: [7, 17, 12, 16, 14, 18, 16, 12, 15, 11, 13, 9],
-        borderColor: ['rgba(54, 162, 235, 0.5)'],
-        backgroundColor: ['rgba(54, 162, 235, 0.5)'],
-        borderWidth: 1,
-        fill: true
-      },
-      {
-        label: 'Linkedin',
-        data: [6, 14, 16, 20, 12, 18, 15, 12, 17, 19, 15, 11],
-        borderColor: ['rgba(255, 206, 86, 0.5)'],
-        backgroundColor: ['rgba(255, 206, 86, 0.5)'],
-        borderWidth: 1,
-        fill: true
-      }
-    ]
-  };
-
-  var multiAreaOptions = {
-    plugins: {
-      filler: {
-        propagate: true
-      }
-    },
-    elements: {
-      point: {
-        radius: 0
-      }
-    },
-    scales: {
-      xAxes: [{
-        gridLines: {
-          display: false
-        }
-      }],
-      yAxes: [{
-        gridLines: {
-          display: false
-        }
-      }]
-    }
-  }
-
-  var scatterChartData = {
-    datasets: [{
-        label: 'First Dataset',
-        data: [{
-            x: -10,
-            y: 0
-          },
-          {
-            x: 0,
-            y: 3
-          },
-          {
-            x: -25,
-            y: 5
-          },
-          {
-            x: 40,
-            y: 5
-          }
-        ],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255,99,132,1)'
-        ],
-        borderWidth: 1
-      },
-      {
-        label: 'Second Dataset',
-        data: [{
-            x: 10,
-            y: 5
-          },
-          {
-            x: 20,
-            y: -30
-          },
-          {
-            x: -25,
-            y: 15
-          },
-          {
-            x: -10,
-            y: 5
-          }
-        ],
-        backgroundColor: [
-          'rgba(54, 162, 235, 0.2)',
-        ],
-        borderColor: [
-          'rgba(54, 162, 235, 1)',
-        ],
-        borderWidth: 1
-      }
-    ]
-  }
-
-  var scatterChartOptions = {
-    scales: {
-      xAxes: [{
-        type: 'linear',
-        position: 'bottom'
-      }]
-    }
-  }
+  
   // Get context with jQuery - using jQuery's .get() method.
   if ($("#barChart").length) {
     var barChartCanvas = $("#barChart").get(0).getContext("2d");
@@ -565,75 +356,11 @@ $(function() {
       options: options
     });
   }
-
-  if ($("#lineChart").length) {
-    var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
-    var lineChart = new Chart(lineChartCanvas, {
-      type: 'line',
-      data: data,
-      options: options
-    });
-  }
-
-  if ($("#linechart-multi").length) {
-    var multiLineCanvas = $("#linechart-multi").get(0).getContext("2d");
-    var lineChart = new Chart(multiLineCanvas, {
-      type: 'line',
-      data: multiLineData,
-      options: options
-    });
-  }
-
-  if ($("#areachart-multi").length) {
-    var multiAreaCanvas = $("#areachart-multi").get(0).getContext("2d");
-    var multiAreaChart = new Chart(multiAreaCanvas, {
-      type: 'line',
-      data: multiAreaData,
-      options: multiAreaOptions
-    });
-  }
-
-  if ($("#doughnutChart").length) {
-    var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
-    var doughnutChart = new Chart(doughnutChartCanvas, {
-      type: 'doughnut',
-      data: doughnutPieData,
-      options: doughnutPieOptions
-    });
-  }
-
   if ($("#pieChart").length) {
     var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
     var pieChart = new Chart(pieChartCanvas, {
       type: 'pie',
       data: doughnutPieData,
-      options: doughnutPieOptions
-    });
-  }
-
-  if ($("#areaChart").length) {
-    var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
-    var areaChart = new Chart(areaChartCanvas, {
-      type: 'line',
-      data: areaData,
-      options: areaOptions
-    });
-  }
-
-  if ($("#scatterChart").length) {
-    var scatterChartCanvas = $("#scatterChart").get(0).getContext("2d");
-    var scatterChart = new Chart(scatterChartCanvas, {
-      type: 'scatter',
-      data: scatterChartData,
-      options: scatterChartOptions
-    });
-  }
-
-  if ($("#browserTrafficChart").length) {
-    var doughnutChartCanvas = $("#browserTrafficChart").get(0).getContext("2d");
-    var doughnutChart = new Chart(doughnutChartCanvas, {
-      type: 'doughnut',
-      data: browserTrafficData,
       options: doughnutPieOptions
     });
   }
@@ -643,141 +370,7 @@ $(function() {
   (function($) {
   'use strict';
   $(function() {
-    if ($("#orders-chart").length) {
-      var currentChartCanvas = $("#orders-chart").get(0).getContext("2d");
-      var currentChart = new Chart(currentChartCanvas, {
-        type: 'bar',
-        data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-          datasets: [{
-              label: 'Delivered',
-              data: [260, 380, 230, 400, 780, 530, 340, 200, 400, 650, 780, 500],
-              backgroundColor: '#392c70'
-            },
-            {
-              label: 'Estimated',
-              data: [480, 600, 510, 600, 1000, 570, 500, 350, 450, 710, 820, 650],
-              backgroundColor: '#d1cede'
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          layout: {
-            padding: {
-              left: 0,
-              right: 0,
-              top: 20,
-              bottom: 0
-            }
-          },
-          scales: {
-            yAxes: [{
-              gridLines: {
-                drawBorder: false,
-              },
-              ticks: {
-                stepSize: 250,
-                fontColor: "#686868"
-              }
-            }],
-            xAxes: [{
-              stacked: true,
-              ticks: {
-                beginAtZero: true,
-                fontColor: "#686868"
-              },
-              gridLines: {
-                display: false,
-              },
-              barPercentage: 0.4
-            }]
-          },
-          legend: {
-            display: false
-          },
-          elements: {
-            point: {
-              radius: 0
-            }
-          },
-          legendCallback: function(chart) { 
-            var text = [];
-            text.push('<ul class="legend'+ chart.id +'">');
-            for (var i = 0; i < chart.data.datasets.length; i++) {
-              text.push('<li><span class="legend-label" style="background-color:' + chart.data.datasets[i].backgroundColor + '"></span>');
-              if (chart.data.datasets[i].label) {
-                text.push(chart.data.datasets[i].label);
-              }
-              text.push('</li>');
-            }
-            text.push('</ul>');
-            return text.join("");
-          },
-        }
-      });
-      document.getElementById('orders-chart-legend').innerHTML = currentChart.generateLegend();
-    }
-    if ($('#sales-chart').length) {
-      var lineChartCanvas = $("#sales-chart").get(0).getContext("2d");
-      var data = {
-        labels: ["2013", "2014", "2014", "2015", "2016", "2017", "2018"],
-        datasets: [
-          {
-            label: 'Support',
-            data: [1500, 7030, 1050, 2300, 3510, 6800, 4500],
-            borderColor: [
-              '#392c70'
-            ],
-            borderWidth: 3,
-            fill: false
-          },
-          {
-            label: 'Product',
-            data: [5500, 4080, 3050, 5600, 4510, 5300, 2400],
-            borderColor: [
-              '#d1cede'
-            ],
-            borderWidth: 3,
-            fill: false
-          }
-        ]
-      };
-      var options = {
-        scales: {
-          yAxes: [{
-            gridLines: {
-              drawBorder: false
-            },
-            ticks: {
-              stepSize: 2000,
-              fontColor: "#686868"
-            }
-          }],
-          xAxes: [{
-            display: false,
-            gridLines: {
-              drawBorder: false
-            }
-          }]
-        },
-        legend: {
-          display: false
-        },
-        elements: {
-          point: {
-            radius: 3
-          }
-        },
-        stepsize: 1
-      };
-      var lineChart = new Chart(lineChartCanvas, {
-        type: 'line',
-        data: data,
-        options: options
-      });
-    }
+    
     if ($("#sales-status-chart").length) {
       var pieChartCanvas = $("#sales-status-chart").get(0).getContext("2d");
       var pieChart = new Chart(pieChartCanvas, {
@@ -833,66 +426,6 @@ $(function() {
         }
       });
       document.getElementById('sales-status-chart-legend').innerHTML = pieChart.generateLegend();
-    }
-    if ($("#daily-sales-chart").length) {
-      var dailySalesChartData = {
-        datasets: [{
-          data: [50, 10, 10, 30],
-          backgroundColor: [
-            '#392c70',
-            '#04b76b',
-            '#e9e8ef',
-            '#ff5e6d'
-          ],
-          borderWidth: 0
-        }],
-    
-        // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: [
-          'Mail order sales',
-          'Instore sales',
-          'Download sales',
-          'Sales return'
-        ]
-      };
-      var dailySalesChartOptions = {
-        responsive: true,
-        maintainAspectRatio: true,
-        animation: {
-          animateScale: true,
-          animateRotate: true
-        },
-        legend: {
-          display: false
-        },
-        legendCallback: function(chart) { 
-          var text = [];
-          text.push('<ul class="legend'+ chart.id +'">');
-          for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
-            text.push('<li><span class="legend-label" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '"></span>');
-            if (chart.data.labels[i]) {
-              text.push(chart.data.labels[i]);
-            }
-            text.push('</li>');
-          }
-          text.push('</ul>');
-          return text.join("");
-        },
-        cutoutPercentage: 70     
-      };
-      var dailySalesChartCanvas = $("#daily-sales-chart").get(0).getContext("2d");
-      var dailySalesChart = new Chart(dailySalesChartCanvas, {
-        type: 'doughnut',
-        data: dailySalesChartData,
-        options: dailySalesChartOptions
-      });
-      document.getElementById('daily-sales-chart-legend').innerHTML = dailySalesChart.generateLegend();
-    }
-    if ($("#inline-datepicker-example").length) {
-      $('#inline-datepicker-example').datepicker({
-        enableOnReadonly: true,
-        todayHighlight: true,
-      });
     }
   });
 })(jQuery);
