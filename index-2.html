@@ -132,23 +132,18 @@
               </div>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index-dash.html">
-              <i class="fa fa-home menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link" data-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
+         
+          <li class="nav-item active">
+            <a class="nav-link " data-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
               <i class="fas fa-map-marker-alt menu-icon"></i>
               <span class="menu-title">Add Element</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="maps">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="index-2.html">Point</a></li>
-                <li class="nav-item"> <a class="nav-link" href="index-2.html">Building</a></li>
-                <li class="nav-item"> <a class="nav-link" href="index-2.html">Area</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Point</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Building</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Area</a></li>
               </ul>
             </div>
           </li>
@@ -158,7 +153,60 @@
               <span class="menu-title">Edit Element</span>
             </a>
           </li>
-          
+          <li>
+            <div class="row ">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h7 class="card-title">Element Details</h4>
+                    
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Tag</th>
+                            <th>Name</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                            <select id="eletag" class="browser-default custom-select " style="width: 80px;" >
+                              <option >Tag</option>
+                              <option selected>nature</option>
+                              <option >type</option>
+                              <option >scientific name</option>
+                            </select>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control form-control-sm" id="tagname" aria-describedby="emailHelp" placeholder="Tree" style="width:100px">
+                          </td>
+                          </tr>
+                          <tr>
+                            <td>
+                            <select id="eletag" class="browser-default custom-select " style="width: 80px;" >
+                              <option selected>Tag</option>
+                              <option>nature</option>
+                              <option >type</option>
+                              <option >scientific name</option>
+                            </select>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control form-control-sm" id="tagname" aria-describedby="emailHelp" placeholder="Name" style="width:100px">
+                          </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <a class="nav-link" href="#">
+                      <span class="btn btn-primary btn-sm">+Add</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
@@ -236,7 +284,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
   </script>
-
+  
     <!-- Leaflet Map Script End -->
 </body>
 </html>
