@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+    - echo "This is build phase..."
+  post_build:
+    commands:
+    - echo "Deploying....."
+artifacts:
+  type: zip
+  paths:
+    - '*'
